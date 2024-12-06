@@ -1,2 +1,24 @@
-# Google App Engine generated folder
-appengine-generated/
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+
+# Django migrations (but track the ones you want in version control)
+*/migrations/
+
+# IDE-specific files
+.vscode/
+*.swp
+
+# Environment variables
+.env
+
+# MySQL databases or backups (if you're storing any locally for testing)
+*.sql
+*.db
+
+# Django secret keys or sensitive info files
+*.env
