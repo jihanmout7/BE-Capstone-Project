@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm  # Use AuthenticationForm for login
 from django.contrib.auth import login
-
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 def register_view(request):
     if request.method == "POST":
@@ -25,3 +27,11 @@ def login_view(request):
         form = AuthenticationForm()  # Initialize form for GET request
 
     return render(request, "social/login.html", {"form": form})
+
+
+
+class ProtectedView(APIView):
+    permission_classes = [IsAuthenticated]  # Only authenticated users can access
+
+    def get(self, request):
+        return Response({"message": "This is a protected resource!"})
